@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Hoodi Maga</title>
+        <style>
+        body {
+            text-align: center;
+        }
+
+        table {
+            margin: 20px auto; /* Center the table */
+            border-collapse: collapse;
+            width: 80%; /* Adjust the width as needed */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            font-size: 16px; /* Adjust the font size */
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border="1">
+        <tr>
+            <th>Sl No.</th>
+            <th>Algorithm</th>
+            <th>Copy Code</th>
+            <th>Copy Dataset</th>
+            <th>Download Dataset</th>
+        </tr>
+        <tr>
+             <td>Program 1</td>
+            <td>A Star</td>
+            <td><button onclick="copyCodeFromFile(1)">Copy !!</button></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+             <td>Program 2</td>
+            <td>AO Star</td>
+            <td><button onclick="copyCodeFromFile(2)">Copy !!</button></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+             <td>Program 3</td>
+            <td>Candidate Elimination</td>
+            <td><button onclick="copyCodeFromFile(3)">Copy !!</button></td>
+            <td><button onclick="copyCsvFromFile(3)">Copy !!</button></td>
+            <td><a href="3.csv" download><button>Download !!</button></a></td>
+        </tr>
+        <tr>
+             <td>Program 4</td>
+            <td>ID3</td>
+            <td><button onclick="copyCodeFromFile(4)">Copy !!</button></td>
+            <td><button onclick="copyCsvFromFile(4)">Copy !!</button></td>
+            <td><a href="4.csv" download><button>Download !!</button></a></td>
+        </tr>
+        <tr>
+             <td>Program 5</td>
+            <td>Backpropagation algorithm</td>
+            <td><button onclick="copyCodeFromFile(5)">Copy !!</button></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+             <td>Program 6</td>
+            <td>Naive Bayesian classifier</td>
+            <td><button onclick="copyCodeFromFile(6)">Copy !!</button></td>
+            <td><button onclick="copyCsvFromFile(6)">Copy !!</button></td>
+            <td><a href="6.csv" download><button>Download !!</button></a></td>
+        </tr>
+        <tr>
+             <td>Program 7</td>
+            <td>EM algorithm / k-Means algorithm</td>
+            <td><button onclick="copyCodeFromFile(7)">Copy !!</button></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+             <td>Program 8</td>
+            <td>k-Nearest Neighbour algorithm</td>
+            <td><button onclick="copyCodeFromFile(8)">Copy !!</button></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+             <td>Program 9</td>
+            <td>Locally Weighted Regressionalgorithm</td>
+            <td><button onclick="copyCodeFromFile(9)">Copy !!</button></td>
+            <td><button onclick="copyCsvFromFile(9)">Copy !!</button></td>
+            <td><a href="9.csv" download><button>Download !!</button></a></td>
+        </tr>
+    </table>
+
+    <script>
+        function copyCodeFromFile(buttonNumber) {
+            var fileName = buttonNumber + '.py'; // Generate file name based on button number
+
+            // Fetch the code from the file using an XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', fileName, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var codeToCopy = xhr.responseText;
+
+                    // Create a temporary textarea to copy the code
+                    var textArea = document.createElement('textarea');
+                    textArea.value = codeToCopy;
+                    document.body.appendChild(textArea);
+
+                    // Select and copy the code
+                    textArea.select();
+                    document.execCommand('copy');
+
+                    // Remove the temporary textarea
+                    document.body.removeChild(textArea);
+
+                    // Provide feedback to the user with button name
+                    alert('Code copied to clipboard for Program ' + buttonNumber + '!');
+                }
+            };
+            xhr.send();
+        }
+
+        function copyCsvFromFile(buttonNumber) {
+            var fileName = buttonNumber + '.csv'; // Generate file name based on button number
+
+            // Fetch the code from the file using an XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', fileName, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var codeToCopy = xhr.responseText;
+
+                    // Create a temporary textarea to copy the code
+                    var textArea = document.createElement('textarea');
+                    textArea.value = codeToCopy;
+                    document.body.appendChild(textArea);
+
+                    // Select and copy the code
+                    textArea.select();
+                    document.execCommand('copy');
+
+                    // Remove the temporary textarea
+                    document.body.removeChild(textArea);
+
+                    // Provide feedback to the user with button name
+                    alert('Code copied to clipboard for Program ' + buttonNumber + ' Dataset !');
+                }
+            };
+            xhr.send();
+        }
+    </script>
+
+</body>
+
+</html>
